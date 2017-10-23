@@ -1,8 +1,5 @@
-from cymetric import timeseries as cytim
 import numpy as np
 import sys
-
-
 
 def read_output(input):
     f = open(input, 'r')
