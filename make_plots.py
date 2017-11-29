@@ -23,8 +23,8 @@ for i in range(len(spectrum_6)):
         ax = fig.add_subplot(111)
         plt.semilogx()
 
-        plt.grid(which='major', alpha=1)
-        plt.grid(which='minor', alpha=0.5)
+#        plt.grid(which='major', alpha=1)
+#        plt.grid(which='minor', alpha=0.5)
 
         x = [val[0] * 1e6 for val in spectrum_6[i]]
         y_6 = [val[1] for val in spectrum_6[i]]
@@ -40,11 +40,11 @@ for i in range(len(spectrum_6)):
             if x[j] < 0.05 or x[j] > 1e6:
                 y_err[j] = 0.
 
-        ax.errorbar(x, y, xerr=0.0, yerr=y_err, linewidth=.3,
+        ax.errorbar(x, y, xerr=0.0, yerr=y_err, linewidth=1.5, elinewidth=0.5,
                    label='Relative Spectrum Difference')
 
         ax2 = fig.add_subplot(111, sharex=ax, frameon=False)
-        line1 = ax2.loglog(E, b, linewidth=.3, color='red', 
+        line1 = ax2.loglog(E, b, linewidth=0.8, color='red', 
                            label='Er-167 Total XS')
         ax2.yaxis.tick_right()
         ax2.yaxis.set_label_position('right')
@@ -60,8 +60,8 @@ for i in range(len(spectrum_6)):
         h2, l2 = ax2.get_legend_handles_labels()
         ax.legend(h1+h2, l1+l2, loc='upper right', fontsize='small')
         plt.xlim(5e-2, 1e3)
-        plt.title('Spect Diff (800K & 1200K) vs  Er-167 XS (time step=' +\
-str(int(i / 2)) + ')' )
+        plt.title('Relative Spectral Difference (800K & 1200K) vs  Er-167 XS') #(time step=' +\
+#str(int(i / 2)) + ')' )
         ax.set_ylabel('Rel Diff [-]')
         ax2.set_ylabel('Total XS [b]')
         plt.xlabel('Neutron Energy [eV]')
